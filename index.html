@@ -1,74 +1,27 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Приватна сторінка</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    #login, #content {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-right: 10px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #1d4ed8;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Приватна сторінка</title>
+    <!-- Підключення зовнішнього CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Форма входу -->
+    <div id="login">
+        <h2>Введіть пароль</h2>
+        <input id="password" type="password" placeholder="Пароль">
+        <button onclick="checkPassword()">Увійти</button>
+    </div>
 
-  <!-- Форма входу -->
-  <div id="login">
-    <h2>Введіть пароль</h2>
-    <input id="password" type="password" placeholder="Пароль">
-    <button onclick="checkPassword()">Увійти</button>
-  </div>
+    <!-- Основний контент -->
+    <div id="content" style="display:none;">
+        <h1>Приватна сторінка</h1>
+        <p>Це контент, який видно лише після введення правильного пароля.</p>
+    </div>
 
-  <!-- Основний контент -->
-  <div id="content" style="display:none;">
-    <h1>Приватна сторінка</h1>
-    <p>Це контент, який видно лише після введення правильного пароля.</p>
-  </div>
-
-  <script>
-    function checkPassword() {
-      const password = document.getElementById("password").value;
-      const correctPassword = "mysecret"; // 🧩 Тут твій пароль
-
-      if (password === correctPassword) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("content").style.display = "block";
-      } else {
-        alert("Невірний пароль. Спробуйте ще раз.");
-      }
-    }
-  </script>
-
+    <!-- Підключення зовнішнього JS -->
+    <script src="script.js"></script>
 </body>
 </html>
