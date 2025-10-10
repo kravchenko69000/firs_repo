@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let df = createDataFrame(combinedData);
     console.log("📊 DataFrame:", df);
+    // 🔹 Побудова графіка
+    if (typeof initCharts === "function") initCharts(df);
 
 
 
@@ -46,6 +48,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (typeof showTables === "function") {
       showTables(globalData);
     }
+
+
+
+  
+    
 
   } catch (error) {
     console.error("❌ Помилка при зчитуванні Excel:", error);
