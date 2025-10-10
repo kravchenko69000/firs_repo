@@ -35,3 +35,40 @@ function showTables(data) {
     container.appendChild(table);
   });
 }
+
+
+//////////////////////////////
+
+function initCharts(df) {
+  if (!df || !df.length) {
+    console.warn("⚠️ DataFrame порожній!");
+    return;
+  }
+
+  const labels = df.map(row => row.Страна);
+  const dataValues = df.map(row => row.Последний);
+
+  const ctx = document.getElementById('chart1');
+  if (!ctx) {
+    console.warn("⛔ Не знайдено canvas для графіка!");
+    return;
+  }
+
+  new Chart(ctx.getContext('2d'), {
+    type: 'bar', 
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Последний (USD - миллиард)',
+        data: dataValues,
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+}
