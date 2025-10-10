@@ -1,12 +1,5 @@
 let globalData = [];
-let SalesData_0 = [];
-let BS_0 = [];
-let CF_0 = [];
-let PL_0 = [];
-let STOCK_0 = [];
-let AP_0 = [];
-let BU_0 = [];
-let AR_0 = [];
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
