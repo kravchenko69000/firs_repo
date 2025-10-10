@@ -1,46 +1,18 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Приватна сторінка</title>
-
-    <!-- Підключення зовнішнього CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- XLSX.js для читання Excel -->
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
-    <!-- Chart.js для побудови графіків -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Підключення JS з defer -->
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Головна сторінка</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Форма входу -->
-    <div id="login">
-        <h2>Введіть пароль</h2>
-        <input id="password" type="password" placeholder="Пароль">
-        <button id="loginBtn">Увійти</button>
-    </div>
+  <h1>Головна сторінка</h1>
+  <p>Оберіть, куди перейти:</p>
 
-    <!-- Основний контент -->
-    <div id="content" style="display:none;">
-        <h1>Приватна сторінка</h1>
-        <p>Це контент, який видно лише після введення правильного пароля.</p>
-
-        <!-- Меню навігації -->
-        <nav class="menu">
-            <a href="index.html">Головна</a>
-            <a href="page1.html">Сторінка 1</a>
-            <a href="page2.html">Сторінка 2</a>
-        </nav>
-
-        <!-- Основний контент сторінки -->
-        <div id="main-content">
-            <p>Вітаємо у вашій приватній зоні! Оберіть сторінку зверху.</p>
-        </div>
-    </div>
+  <div class="buttons">
+    <button onclick="location.href='page1.html'">Перейти на сторінку 1</button>
+    <button onclick="location.href='page2.html'">Перейти на сторінку 2</button>
+  </div>
 </body>
 </html>
