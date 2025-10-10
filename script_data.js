@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("📊 Окремі таблиці:");
     console.log({ SalesData_0, BS_0, CF_0, PL_0, STOCK_0, AP_0, BU_0, AR_0 });
+    console.log(SalesData_0);
 
   } catch (error) {
     console.error("❌ Помилка при зчитуванні Excel:", error);
