@@ -1,19 +1,25 @@
 function initCharts(data) {
-  console.log("📈 Отримав дані у Chart_logic.js:", data);
+  console.log("📈 Дані у Chart_logic.js:", data);
 
   const ctx = document.getElementById('chart1');
-  if (!ctx) {
-    console.warn("⛔ Не знайдено canvas для графіка!");
-    return;
+  if (!ctx) return console.warn("⛔ Не знайдено canvas для графіка!");
+
+  // Перевіряємо, що хоча б один аркуш є
+  if (!Array.isArray(data) || !data[0]) {
+    return console.warn("⚠️ Перший аркуш Excel відсутній або порожній!");
   }
 
-  const chart = new Chart(ctx, {
+  const sheet = data[0]; // перший аркуш
+  const labels = sheet.map(row => row[0] || ""); // перший стовпець
+  const values = sheet.map(row => row[1] || 0); // другий стовпець
+
+  new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: data.Sheet1.map(row => row[0]), // перший стовпець як підписи
+      labels: labels,
       datasets: [{
-        label: 'Приклад',
-        data: data.Sheet1.map(row => row[1]), // другий стовпець як значення
+        label: 'Приклад по індексу',
+        data: values,
         backgroundColor: 'rgba(37, 99, 235, 0.5)',
         borderColor: 'rgba(37, 99, 235, 1)',
         borderWidth: 1
@@ -22,9 +28,7 @@ function initCharts(data) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: {
-        y: { beginAtZero: true }
-      }
+      scales: { y: { beginAtZero: true } }
     }
   });
 }
