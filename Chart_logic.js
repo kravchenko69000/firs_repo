@@ -18,12 +18,15 @@ function showTables(data) {
     table.style.marginBottom = "20px";
     table.style.width = "100%";
 
-    sheet.forEach((row, rowIndex) => {
+    // 🔹 Показуємо лише перші 5 рядків (включаючи заголовок)
+    const limitedRows = sheet.slice(0, 5);
+
+    limitedRows.forEach((row, rowIndex) => {
       const tr = document.createElement('tr');
 
       row.forEach(cell => {
         const td = document.createElement(rowIndex === 0 ? 'th' : 'td');
-        td.textContent = cell ?? ""; // якщо null/undefined
+        td.textContent = cell ?? "";
         td.style.border = "1px solid #444";
         td.style.padding = "4px 8px";
         tr.appendChild(td);
@@ -33,9 +36,17 @@ function showTables(data) {
     });
 
     container.appendChild(table);
+
+    // Якщо є більше рядків — покажемо підпис
+    if (sheet.length > 5) {
+      const note = document.createElement('p');
+      note.textContent = `Показано перші 5 із ${sheet.length} рядків`;
+      note.style.fontStyle = "italic";
+      note.style.color = "#888";
+      container.appendChild(note);
+    }
   });
 }
-
 
 //////////////////////////////
 
