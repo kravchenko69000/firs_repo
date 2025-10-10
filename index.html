@@ -1,18 +1,56 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Головна сторінка</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Головна сторінка</h1>
-  <p>Оберіть, куди перейти:</p>
+document.addEventListener("DOMContentLoaded", () => {
+  const correctPassword = "1234"; // 🔒 заміни на свій пароль
 
-  <div class="buttons">
-    <button onclick="location.href='page1.html'">Перейти на сторінку 1</button>
-    <button onclick="location.href='page2.html'">Перейти на сторінку 2</button>
-  </div>
-</body>
-</html>
+  const loginDiv = document.getElementById("login");
+  const contentDiv = document.getElementById("content");
+  const loginBtn = document.getElementById("loginBtn");
+  const cancelBtn = document.getElementById("cancelBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const loginMsg = document.getElementById("loginMsg");
+
+  // 🔸 Функція оновлення вигляду
+  function updateView() {
+    const logged = localStorage.getItem("loggedIn") === "true";
+    if (logged) {
+      if (loginDiv) loginDiv.style.display = "none";
+      if (contentDiv) contentDiv.style.display = "block";
+    } else {
+      if (loginDiv) loginDiv.style.display = "block";
+      if (contentDiv) contentDiv.style.display = "none";
+    }
+  }
+
+  // 🔸 Обробник кнопки логіну
+  if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      const pw = document.getElementById("password").value;
+      if (pw === correctPassword) {
+        localStorage.setItem("loggedIn", "true");
+        if (loginMsg) loginMsg.style.display = "none";
+        updateView();
+      } else {
+        if (loginMsg) {
+          loginMsg.textContent = "Невірний пароль!";
+          loginMsg.style.display = "block";
+        }
+      }
+    });
+  }
+
+  // 🔸 Вихід
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("loggedIn");
+      updateView();
+    });
+  }
+
+  // 🔸 Кнопка "На головну"
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      location.href = "index.html";
+    });
+  }
+
+  updateView();
+});
