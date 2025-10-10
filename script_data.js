@@ -1,5 +1,5 @@
 let globalData = [];
-let df = [];
+let combinedData = [];
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -23,24 +23,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 🔁 Об’єднуємо всі аркуші в один масив
     let combinedData = globalData.flat();
-    console.log("🔁 Об’єднані дані:", combinedData);
-
-    // 2️⃣ Створюємо DataFrame
-    function createDataFrame(data) {
-      if (!data.length) return [];
-      const headers = data[0];
-      const rows = data.slice(1);
-      return rows.map(row => {
-        const obj = {};
-        headers.forEach((h, i) => obj[h] = row[i] ?? null);
-        return obj;
-      });
-    }
-
-    let df = createDataFrame(combinedData);
-    console.log("📊 DataFrame:", df);
+    
+    console.log("📊 DataFrame:",combinedData);
     // 🔹 Побудова графіка
-    if (typeof initCharts === "function") initCharts(df);
+    if (typeof initCharts === "function") initCharts(combinedData);
 
 
 
