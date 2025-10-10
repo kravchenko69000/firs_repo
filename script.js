@@ -42,3 +42,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateView();
 });
+
+/////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const checkbox = document.getElementById("themeCheckbox");
+
+  // Застосовуємо тему при завантаженні
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+    if (checkbox) checkbox.checked = true;
+  }
+
+  // При зміні положення слайдера
+  if (checkbox) {
+    checkbox.addEventListener("change", () => {
+      body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
+    });
+  }
+});
