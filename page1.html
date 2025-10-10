@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Сторінка 1</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Сторінка 1</h1>
-  <p>Це перша сторінка сайту.</p>
-
-  <div class="buttons">
+  <div id="content" style="text-align:center; margin-top:50px;">
+    <h1>Сторінка 1</h1>
+    <p>Це перша приватна сторінка.</p>
     <button onclick="location.href='index.html'">На головну</button>
     <button onclick="location.href='page2.html'">На сторінку 2</button>
   </div>
+
+  <script>
+    // 🔒 Якщо не авторизований — повертаємо на головну
+    if (localStorage.getItem("loggedIn") !== "true") {
+      location.href = "index.html";
+    }
+  </script>
 </body>
 </html>
