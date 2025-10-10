@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 50px;
   transition: background-color 0.3s, color 0.3s;
+  box-sizing: border-box;
 }
 
 /* 🔘 Кнопки */
@@ -19,10 +20,19 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
+  min-width: 120px;
 }
 
 button:hover {
   background-color: #1d4ed8;
+}
+
+/* 🧩 Контейнер логіну і контенту */
+#login, #content {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* 🔄 Перемикач теми */
@@ -78,7 +88,38 @@ input:checked + .slider:before {
   transform: translateX(24px);
 }
 
-/* 🌙 Темна тема — змінюємо колір перемикача */
-body.dark-mode .slider {
-  background-color: #3b82f6;
+/* 📱 Адаптивність */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  #login, #content {
+    width: 100%;
+    padding: 15px;
+  }
+
+  input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  h1, h2 {
+    font-size: 1.5em;
+  }
+
+  .theme-switch {
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+  }
 }
+
