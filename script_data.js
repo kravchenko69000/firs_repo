@@ -1,4 +1,6 @@
 let globalData = [];
+let df = [];
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -19,9 +21,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("✅ Дані зчитані:", globalData);
 
-   if (typeof showTables === "function") {
-    showTables(globalData);
-  }
+    // 🔁 Об’єднуємо всі аркуші в один масив
+    let combinedData = globalData.flat();
+    console.log("🔁 Об’єднані дані:", combinedData);
+
+    // 2️⃣ Створюємо DataFrame
+    function createDataFrame(data) {
+      if (!data.length) return [];
+      const headers = data[0];
+      const rows = data.slice(1);
+      return rows.map(row => {
+        const obj = {};
+        headers.forEach((h, i) => obj[h] = row[i] ?? null);
+        return obj;
+      });
+    }
+
+    let df = createDataFrame(combinedData);
+    console.log("📊 DataFrame:", df);
+
+
+
+    // 🔹 Виклик функції для показу таблиць
+    if (typeof showTables === "function") {
+      showTables(globalData);
+    }
 
   } catch (error) {
     console.error("❌ Помилка при зчитуванні Excel:", error);
