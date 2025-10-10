@@ -10,15 +10,18 @@ function initCharts(data) {
   const chart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: data.Sheet1.map(row => row[0]), // приклад
+      labels: data.Sheet1.map(row => row[0]), // перший стовпець як підписи
       datasets: [{
         label: 'Приклад',
-        data: data.Sheet1.map(row => row[1]),
+        data: data.Sheet1.map(row => row[1]), // другий стовпець як значення
+        backgroundColor: 'rgba(37, 99, 235, 0.5)',
+        borderColor: 'rgba(37, 99, 235, 1)',
         borderWidth: 1
       }]
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       scales: {
         y: { beginAtZero: true }
       }
