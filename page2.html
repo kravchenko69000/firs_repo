@@ -6,6 +6,15 @@
   <title>Сторінка 2</title>
   <link id="themeLink" rel="stylesheet" href="light.css">
   <script src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Логіка графіків та даних -->
+  <script src="Chart_logic.js"></script>
+  <script src="script_data.js"></script>
+
+  
 </head>
 <body>
    <!-- 🔘 Перемикач теми -->
@@ -24,6 +33,9 @@
     <button onclick="location.href='index.html'">На головну</button>
    
   </div>
+
+  <h1>Графік по країнах</h1>
+  <canvas id="chart1" width="600" height="400"></canvas>
 
   <script>
     if (localStorage.getItem("loggedIn") !== "true") {
