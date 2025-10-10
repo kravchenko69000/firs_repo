@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Приватна сторінка</title>
+
     <!-- Підключення зовнішнього CSS -->
     <link rel="stylesheet" href="style.css">
+
     <!-- Підключення зовнішнього JS -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
     <!-- XLSX.js для читання Excel -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <!-- Chart.js для побудови графіків -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
 </head>
 <body>
     <!-- Форма входу -->
@@ -28,8 +29,18 @@
     <div id="content" style="display:none;">
         <h1>Приватна сторінка</h1>
         <p>Це контент, який видно лише після введення правильного пароля.</p>
+
+        <!-- Меню навігації -->
+        <nav class="menu">
+            <a href="index.html">Головна</a>
+            <a href="page1.html">Сторінка 1</a>
+            <a href="page2.html">Сторінка 2</a>
+        </nav>
+
+        <!-- Основний контент сторінки -->
+        <div id="main-content">
+            <p>Вітаємо у вашій приватній зоні! Оберіть сторінку зверху.</p>
+        </div>
     </div>
-
-
 </body>
 </html>
