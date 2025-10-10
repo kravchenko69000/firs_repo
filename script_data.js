@@ -4,7 +4,7 @@ let combinedData = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch('Test.xlsx');
+    const response = await fetch('PO.xlsx');
     if (!response.ok) throw new Error(`Файл не знайдено: ${response.status}`);
 
     const buffer = await response.arrayBuffer();
@@ -21,14 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("✅ Дані зчитані:", globalData);
 
-    // 🔁 Об’єднуємо всі аркуші в один масив
-    let combinedData = globalData.flat();
-    
-    console.log("📊 DataFrame:",combinedData);
-    // 🔹 Побудова графіка
-    if (typeof initCharts === "function") initCharts(combinedData);
-
-
+  
 
     // 🔹 Виклик функції для показу таблиць
     if (typeof showTables === "function") {
