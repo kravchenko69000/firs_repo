@@ -45,26 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
+  const themeLink = document.getElementById("themeLink");
   const checkbox = document.getElementById("themeCheckbox");
 
-  // Якщо checkbox не існує — вихід
-  if (!checkbox) return;
-
-  // Встановлюємо тему при завантаженні
-  if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark-mode");
-    checkbox.checked = true;
-  }
+  // При завантаженні сторінки
+  const savedTheme = localStorage.getItem("theme") || "light";
+  themeLink.href = savedTheme + ".css";
+  if (checkbox) checkbox.checked = savedTheme === "dark";
 
   // Перемикання теми
-  checkbox.addEventListener("change", () => {
-    if (checkbox.checked) {
-      body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  });
+  if (checkbox) {
+    checkbox.addEventListener("change", () => {
+      const newTheme = checkbox.checked ? "dark" : "light";
+      themeLink.href = newTheme + ".css";
+      localStorage.setItem("theme", newTheme);
+    });
+  }
 });
