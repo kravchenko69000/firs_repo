@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("✅ Дані зчитані:", globalData);
 
-    if (typeof initCharts === "function") {
-      initCharts(globalData);
-    }
+   if (typeof showTables === "function") {
+    showTables(globalData);
+  }
 
   } catch (error) {
     console.error("❌ Помилка при зчитуванні Excel:", error);
