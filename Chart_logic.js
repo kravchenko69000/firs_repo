@@ -59,7 +59,7 @@ function initCharts(df) {
     data: {
       labels: labels,
       datasets: [{
-        label: 'Последний (USD - миллиард)',
+        label: 'Sales Report',
         data: dataValues,
         backgroundColor: 'rgba(54, 162, 235, 0.6)',
         borderColor: 'rgba(54, 162, 235, 1)',
