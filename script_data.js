@@ -1,19 +1,24 @@
-let globalData = []; // тепер масив, а не об'єкт
+let globalData = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch('Test.xlsx');
+    if (!response.ok) throw new Error(`Файл не знайдено: ${response.status}`);
+
     const buffer = await response.arrayBuffer();
     const workbook = XLSX.read(buffer, { type: 'array' });
 
-    // Масив усіх аркушів по порядку
+    if (!workbook.SheetNames.length) {
+      console.warn("⚠️ Excel не містить жодного аркуша!");
+    }
+
+    // Масив аркушів
     globalData = workbook.SheetNames.map(name =>
       XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1 })
     );
 
-    console.log("✅ Дані зчитані (масив аркушів):", globalData);
+    console.log("✅ Дані зчитані:", globalData);
 
-    // Виклик графіків
     if (typeof initCharts === "function") {
       initCharts(globalData);
     }
