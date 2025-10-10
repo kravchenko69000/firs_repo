@@ -45,8 +45,8 @@ function initCharts(df) {
     return;
   }
 
-  const labels = df.map(row => row[0]);     // перша колонка
-  const dataValues = df.map(row => row[1]); // друга колонка
+  const labels = df.slice(1).map(row => row[0]);     // перша колонка
+  const dataValues = df.slice(1).map(row => row[1]); // друга колонка
 
   const ctx = document.getElementById('chart1');
   if (!ctx) {
