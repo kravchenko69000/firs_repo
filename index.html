@@ -8,21 +8,21 @@
     <!-- Підключення зовнішнього CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Підключення зовнішнього JS -->
-    <script src="script.js" defer></script>
-
     <!-- XLSX.js для читання Excel -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <!-- Chart.js для побудови графіків -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Підключення JS з defer -->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Форма входу -->
     <div id="login">
         <h2>Введіть пароль</h2>
         <input id="password" type="password" placeholder="Пароль">
-        <button onclick="checkPassword()">Увійти</button>
+        <button id="loginBtn">Увійти</button>
     </div>
 
     <!-- Основний контент -->
