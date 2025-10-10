@@ -3,11 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Головна</title>
+  <title>Головна сторінка</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="text-align:center; margin-top:40px;">
-  <h1>Головна сторінка</h1>
-  <button onclick="location.href='page1.html'">На сторінку 1</button>
-  <button onclick="location.href='page2.html'">На сторінку 2</button>
+<body>
+  <!-- Форма входу -->
+  <div id="login" style="text-align:center; margin-top:50px;">
+    <h2>Вхід</h2>
+    <input id="password" type="password" placeholder="Введіть пароль">
+    <button id="loginBtn">Увійти</button>
+    <p id="loginMsg" style="color:red; display:none;"></p>
+  </div>
+
+  <!-- Основний контент -->
+  <div id="content" style="display:none; text-align:center;">
+    <h1>Вітаємо!</h1>
+    <p>Ви успішно увійшли до системи.</p>
+    <button onclick="location.href='page1.html'">На сторінку 1</button>
+    <button onclick="location.href='page2.html'">На сторінку 2</button>
+    <br><br>
+    <button id="logoutBtn" style="background:#f87171;">Вийти</button>
+  </div>
+
+  <script src="auth.js"></script>
 </body>
 </html>
