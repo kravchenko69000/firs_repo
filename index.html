@@ -3,27 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Головна сторінка</title>
+  <title>Вхід у систему</title>
   <link id="themeLink" rel="stylesheet" href="light.css">
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- 🔘 Перемикач теми -->
-  <div class="theme-switch">
-    <span>🌞</span>
-    <label class="switch">
-      <input type="checkbox" id="themeCheckbox">
-      <span class="slider"></span>
-    </label>
-    <span>🌙</span>
-  </div>
-  
-  <!-- Форма входу -->
   <div id="login" style="text-align:center; margin-top:50px;">
     <h2>Вхід</h2>
-    <input id="password" type="password" placeholder="Введіть пароль">
+    <input id="username" type="text" placeholder="Введіть ім'я користувача"><br><br>
+    <input id="password" type="password" placeholder="Введіть пароль"><br><br>
     <button id="loginBtn">Увійти</button>
     <p id="loginMsg" style="color:red; display:none;"></p>
   </div>
