@@ -32,7 +32,7 @@ const flags = document.querySelectorAll('.language-widget .flag');
 let currentLang = localStorage.getItem('lang') || 'en';
 
 // Функція зміни мови та переходу на відповідну сторінку
-function setLanguage(lang) {
+function setLanguage(lang, redirect = true) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
 
@@ -41,17 +41,19 @@ function setLanguage(lang) {
 
   console.log("Вибрана мова:", lang);
 
-  // Перенаправлення на відповідну сторінку
-  const pageMap = {
-    en: 'PO_EN.html',
-    ru: 'PO_RU.html',
-    si: 'PO_SI.html',
-    uk: 'PO_UK.html'
-  };
+  if (redirect) {
+    // Перенаправлення на відповідну сторінку
+    const pageMap = {
+      en: 'PO_EN.html',
+      ru: 'PO_RU.html',
+      si: 'PO_SI.html',
+      uk: 'PO_UK.html'
+    };
 
-  const targetPage = pageMap[lang];
-  if (targetPage) {
-    window.location.href = targetPage;
+    const targetPage = pageMap[lang];
+    if (targetPage) {
+      window.location.href = targetPage;
+    }
   }
 }
 
@@ -60,5 +62,5 @@ flags.forEach(flag => {
   flag.addEventListener('click', () => setLanguage(flag.dataset.lang));
 });
 
-// Ініціалізація при завантаженні
-setLanguage(currentLang);
+// Ініціалізація при завантаженні — лише підсвічування, без переходу
+setLanguage(currentLang, false);
