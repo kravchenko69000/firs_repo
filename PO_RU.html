@@ -1,45 +1,65 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Сторінка 1</title>
-  <script defer src="script_widgets.js"></script>
-  <link id="themeLink" rel="stylesheet" href="light.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Отчет с графиками</title>
 
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- Підключення тем -->
+  <link rel="stylesheet" href="light.css" id="theme-link">
 </head>
 <body>
-    <!-- 🌍 Віджет вибору мови -->
-  <div class="language-widget">
-    <span class="flag" data-lang="uk" title="Українська">🇺🇦</span>
-    <span class="flag" data-lang="en" title="English">🇺🇸</span>
-    <span class="flag" data-lang="si" title="Slovenščina">🇸🇮</span>
-    <span class="flag" data-lang="ru" title="Русский">🇷🇺</span>
-  </div>
+  <nav>
+    <div class="nav-links">
+      <a href="#commercial">Коммерция</a>
+      <a href="#financial">Финансы</a>
+      <a href="#pl">PL</a>
+      <a href="#bs">BS</a>
+      <a href="#cf">CF</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-theme" id="themeToggle">🌙 Тема</button>
+      <button class="btn btn-logout" id="logoutBtn">Выйти</button>
+    </div>
+  </nav>
 
-  
-   <!-- 🔘 Перемикач теми -->
-  <div class="theme-widget">
-    <span class="sun">🌞</span>
-    <label class="switch">
-      <input type="checkbox" id="themeCheckbox">
-      <span class="slider round"></span>
-    </label>
-    <span class="moon">🌙</span>
-  </div>
+  <main>
+    <section id="commercial">
+      <h2>Коммерческая часть</h2>
+      <div class="chart-container" id="sales_fig1"></div>
+      <div class="chart-container" id="sales_fig2"></div>
+    </section>
 
+    <section id="financial">
+      <h2>Финансовая часть</h2>
+      <div class="chart-container" id="fin_fig1"></div>
+      <div class="chart-container" id="fin_fig2"></div>
+    </section>
 
+    <section id="pl">
+      <h2>Profit & Loss</h2>
+      <div class="chart-container" id="pl_fig1"></div>
+      <div class="chart-container" id="pl_fig2"></div>
+    </section>
 
+    <section id="bs">
+      <h2>Balance Sheet</h2>
+      <div class="chart-container" id="bs_fig1"></div>
+    </section>
 
+    <section id="cf">
+      <h2>Cash Flow</h2>
+      <div class="chart-container" id="cf_fig1"></div>
+    </section>
+  </main>
 
-  
-  
-  <div id="content" style="text-align:center; margin-top:50px;">
-    <h1>Сторінка RU</h1>
-    <p>Це перша приватна сторінка.</p>
+  <footer>
+    Отчет после закрытия месяца
+  </footer>
 
-
-  
-
+  <script src="script.js"></script>
 </body>
 </html>
