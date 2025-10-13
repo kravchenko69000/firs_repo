@@ -56,15 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.getElementById("logoutBtn");
 
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", handleLogout);
+    logoutBtn.addEventListener("click", () => {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = "index.html"; // повернення на головну
+    });
   }
 });
-
-// 🔴 Функція виходу
-function handleLogout() {
-  // Очищення локального сховища
-  localStorage.clear();
-
-  // Перехід на головну сторінку
-  window.location.href = "index.html"; // Замінити, якщо головна має іншу назву
-}
