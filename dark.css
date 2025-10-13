@@ -74,3 +74,76 @@ button:hover {
     font-size: 15px;
   }
 }
+
+
+/* === Віджет перемикача теми === */
+.theme-widget {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Світла або темна фонова заливка */
+body.light .theme-widget {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+body.dark .theme-widget {
+  background: rgba(50, 50, 50, 0.7);
+}
+
+/* Слайдер */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #333;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.sun, .moon {
+  font-size: 20px;
+  user-select: none;
+}
