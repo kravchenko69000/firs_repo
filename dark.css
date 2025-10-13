@@ -1,6 +1,4 @@
-/* =========================================
-   Загальні стилі для темної теми
-========================================= */
+/* Темна тема */
 body {
   font-family: 'Segoe UI', sans-serif;
   display: flex;
@@ -8,14 +6,11 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  transition: background-color 0.4s, color 0.4s;
   background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
   color: #f5f5f5;
+  transition: background-color 0.4s, color 0.4s;
 }
 
-/* =========================================
-   Контейнер логіну
-========================================= */
 .login-container {
   background: #222;
   padding: 40px;
@@ -27,24 +22,9 @@ body {
   transition: all 0.3s ease;
 }
 
-/* =========================================
-   Заголовки та текст
-========================================= */
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: #7eaaf2;
-}
+h2 { color: #7eaaf2; font-size: 1.8rem; margin-bottom: 20px; }
+#loginMsg { color: #f87171; margin-top: 10px; font-weight: 500; }
 
-#loginMsg {
-  margin-top: 10px;
-  color: #f87171;
-  font-weight: 500;
-}
-
-/* =========================================
-   Поля вводу
-========================================= */
 input {
   width: 85%;
   padding: 14px;
@@ -58,14 +38,8 @@ input {
   transition: 0.2s;
 }
 
-input:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 6px rgba(74,144,226,0.4);
-}
+input:focus { border-color: #4a90e2; box-shadow: 0 0 6px rgba(74,144,226,0.4); }
 
-/* =========================================
-   Кнопки
-========================================= */
 button {
   width: 90%;
   padding: 14px;
@@ -81,9 +55,6 @@ button {
 
 button:hover { background-color: #3570b3; transform: scale(1.02); }
 
-/* =========================================
-   Віджет перемикача теми
-========================================= */
 .theme-widget {
   position: fixed;
   top: 10px;
@@ -94,107 +65,20 @@ button:hover { background-color: #3570b3; transform: scale(1.02); }
   padding: 6px 12px;
   border-radius: 20px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   z-index: 1000;
-  background: rgba(50, 50, 50, 0.7);
+  background: rgba(50,50,50,0.7);
 }
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 26px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background-color: #555;
-  transition: .4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .slider { background-color: #4a90e2; }
-input:checked + .slider:before { transform: translateX(24px); }
-
-.sun, .moon { font-size: 20px; user-select: none; }
-
-/* =========================================
-   Адаптивність для мобільних
-========================================= */
-@media (max-width: 480px) {
-  .login-container {
-    width: 92%;
-    padding: 24px;
-    border-radius: 14px;
-  }
-
-  input, button { font-size: 15px; padding: 12px; width: 95%; }
-  h2 { font-size: 1.4rem; }
-}
-
-/* Для ноутбуків і середніх екранів */
-@media (min-width: 768px) and (max-width: 1200px) {
-  .login-container { max-width: 600px; padding: 50px; }
-  input, button { font-size: 18px; padding: 16px; width: 85%; }
-  h2 { font-size: 2rem; }
-}
-
-/* Для великих екранів (1200px+) */
-@media (min-width: 1200px) {
-  .login-container { max-width: 700px; padding: 60px; }
-  input, button { font-size: 19px; padding: 18px; width: 80%; }
-  h2 { font-size: 2.2rem; }
-}
-
-/* === Віджет мов для темної теми === */
 .language-widget {
   position: fixed;
   top: 10px;
-  right: 10px;
+  left: 20px;
   display: flex;
   gap: 10px;
   align-items: center;
   z-index: 1000;
-  background: rgba(50,50,50,0.85);
+  background: rgba(30,30,30,0.85);
   padding: 6px 10px;
   border-radius: 16px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-
-.language-widget .flag {
-  font-size: 28px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.language-widget .flag:hover {
-  transform: scale(1.3);
-}
-
-.language-widget .flag.selected {
-  transform: scale(1.5);
-  box-shadow: 0 0 12px rgba(74,144,226,1);
-  border-radius: 8px;
-}
-
+  backdrop-filter: blur
