@@ -147,15 +147,18 @@ button:hover {
 
 /* Права група: тема день/ніч */
 .theme-widget {
+  position: fixed;
+  top: 10px;
+  right: 20px;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  background: rgba(255,255,255,0.85);
-  border-radius: 14px;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 1001;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+  background: rgba(255,255,255,0.7);
 }
 
 .sun, .moon {
