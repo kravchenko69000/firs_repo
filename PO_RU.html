@@ -6,33 +6,65 @@
   <title>Отчет с графиками</title>
 
   <script defer src="script_widgets.js"></script>
-
-  <!-- Підключення тем -->
   <link rel="stylesheet" href="light.css" id="theme-link">
 </head>
 <body>
+
+  <!-- 🔹 Навігація -->
   <nav>
-    <div class="top-bar">
-      <button class="logout-btn" id="logoutBtn">Вихід</button>
+    <div class="links">
+      <a href="#commercial">Коммерческая часть</a>
+      <a href="#financial">Финансовая часть</a>
 
-  <div class="language-widget">
-    <span class="flag" data-lang="uk" title="Українська">🇺🇦</span>
-    <span class="flag" data-lang="en" title="English">🇺🇸</span>
-    <span class="flag" data-lang="si" title="Slovenščina">🇸🇮</span>
-    <span class="flag" data-lang="ru" title="Русский">🇷🇺</span>
-  </div>
+      <div style="display: flex; align-items: center; gap: 5px; flex-wrap: wrap; font-weight: bold; color: white;">
+        <a href="#pl">→ PL</a>
+        <span>(</span>
+        <a href="#pl-budget" style="font-weight: normal; color: white;">Бюджет</a><span>,</span>
+        <a href="#pl-fact" style="font-weight: normal; color: white;">Факт</a><span>,</span>
+        <span style="font-weight: normal;">План факт Анализ (</span>
+        <a href="#pl-cumulative" style="font-weight: normal; color: white;">Кумулятивный</a><span>,</span>
+        <a href="#pl-month" style="font-weight: normal; color: white;">Месяц</a>
+        <span style="font-weight: normal;">)</span>
+        <span>)</span>
+      </div>
 
-  <div class="theme-widget">
-    <span class="sun">🌞</span>
-    <label class="switch">
-      <input type="checkbox" id="themeCheckbox">
-      <span class="slider round"></span>
-    </label>
-    <span class="moon">🌙</span>
-  </div>
-</div>
+      <a href="#bs">→ BS</a>
+      <span>(</span>
+      <a href="#wc">WC</a>
+      <span>)</span>
+
+      <a href="#cf">→ CF</a>
+    </div>
+
+    <div class="run-date">
+      Выполнено: {run_date} (Киевское время)<br>
+      Отчет после закрытия<br>
+      {REPORT_MONTH} {REPORT_YEAR} года
+    </div>
   </nav>
 
+  <!-- 🔹 Верхня панель: тема / мова / вихід -->
+  <div class="top-bar">
+    <div class="theme-widget">
+      <span class="sun">🌞</span>
+      <label class="switch">
+        <input type="checkbox" id="themeCheckbox">
+        <span class="slider round"></span>
+      </label>
+      <span class="moon">🌙</span>
+    </div>
+
+    <div class="language-widget">
+      <span class="flag" data-lang="uk" title="Українська">🇺🇦</span>
+      <span class="flag" data-lang="en" title="English">🇺🇸</span>
+      <span class="flag" data-lang="si" title="Slovenščina">🇸🇮</span>
+      <span class="flag" data-lang="ru" title="Русский">🇷🇺</span>
+    </div>
+
+    <button class="logout-btn" id="logoutBtn">⇦ Вихід</button>
+  </div>
+
+  <!-- 🔹 Основна частина -->
   <main>
     <section id="commercial">
       <h2>Коммерческая часть</h2>
