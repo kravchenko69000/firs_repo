@@ -180,20 +180,19 @@ input:checked + .slider:before { transform: translateX(24px); }
   .language-widget .flag, .theme-widget span { font-size: 30px; }
 }
 
-/* 🔴 Кнопка виходу — світла тема */
 .logout-btn {
   position: fixed;
-  top: 10px;
-  right: 80px;
-  background-color: #ef4444; /* червона */
-  color: #ffffff;
+  top: 12px;
+  right: 20px;
+  background-color: #ef4444;
+  color: white;
   border: none;
-  border-radius: 12px;
-  padding: 10px 18px;
-  font-size: 16px;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 14px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   transition: all 0.25s ease;
   z-index: 1000;
 }
@@ -203,15 +202,12 @@ input:checked + .slider:before { transform: translateX(24px); }
   transform: scale(1.05);
 }
 
-/* 🔹 Адаптивність */
 @media (max-width: 480px) {
   .logout-btn {
-    right: 60px;
-    padding: 8px 14px;
-    font-size: 14px;
+    padding: 6px 12px;
+    font-size: 12px;
+    right: 10px;
   }
 }
-
-
 
 
