@@ -31,16 +31,31 @@ document.addEventListener("DOMContentLoaded", () => {
 const flags = document.querySelectorAll('.language-widget .flag');
 let currentLang = localStorage.getItem('lang') || 'en';
 
+// Функція зміни мови та переходу на відповідну сторінку
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
 
-  // Додаємо клас selected тільки до вибраного прапора
+  // Візуальне виділення вибраного прапора
   flags.forEach(f => f.classList.toggle('selected', f.dataset.lang === lang));
+
   console.log("Вибрана мова:", lang);
+
+  // Перенаправлення на відповідну сторінку
+  const pageMap = {
+    en: 'PO_EN.html',
+    ru: 'PO_RU.html',
+    si: 'PO_SI.html',
+    uk: 'PO_UK.html'
+  };
+
+  const targetPage = pageMap[lang];
+  if (targetPage) {
+    window.location.href = targetPage;
+  }
 }
 
-// Клік по прапору
+// Обробка кліку по прапору
 flags.forEach(flag => {
   flag.addEventListener('click', () => setLanguage(flag.dataset.lang));
 });
