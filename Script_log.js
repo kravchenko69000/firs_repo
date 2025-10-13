@@ -3,15 +3,17 @@ class User {
     this.name = name;
     this.password = password;
     this.counter = 0;
-    this.lastLogin = null;
+    this.loginTimes = []; // масив дат входів
   }
 
   checkPassword(inputPassword) {
     this.counter++;
     if (inputPassword === this.password) {
-      this.lastLogin = new Date().toLocaleString();
+      const currentTime = new Date().toLocaleString();
+      this.loginTimes.push(currentTime);
+
       console.log(`✅ Вітаю, ${this.name}!`);
-      console.log(`🕒 Час входу: ${this.lastLogin}`);
+      console.log(`🕒 Час входу: ${currentTime}`);
       return true;
     } else {
       console.log("❌ Невірний пароль!");
@@ -20,7 +22,12 @@ class User {
   }
 
   info() {
-    console.log(`👤 ${this.name} | Входів: ${this.counter} | Останній: ${this.lastLogin || "немає"}`);
+    console.log(`👤 ${this.name} | Входів: ${this.counter} | Всі часи: ${this.loginTimes.join(", ")}`);
+  }
+
+  // Метод для експорту даних у масив
+  toArray() {
+    return [this.name, this.counter, this.loginTimes];
   }
 }
 
@@ -56,10 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (user.checkPassword(password)) {
       // ✅ Зберігаємо дані про користувача у sessionStorage
       sessionStorage.setItem("userName", user.name);
-      sessionStorage.setItem("loginTime", user.lastLogin);
       sessionStorage.setItem("loginCount", user.counter);
+      sessionStorage.setItem("loginTimes", JSON.stringify(user.loginTimes));
 
-      // Перехід на сторінку PO_EN.html
+      // 🔹 Створюємо масив усіх користувачів для логування
+      const userDataArray = users.map(u => u.toArray());
+      console.log("📊 Дані всіх користувачів:");
+      console.log(userDataArray);
+
+      // Перехід на сторінку
       window.location.href = "PO_EN.html";
     } else {
       loginMsg.style.display = "block";
