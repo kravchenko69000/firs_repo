@@ -6,21 +6,21 @@
   <title>Вхід</title>
 
   <!-- Тема за замовчуванням -->
-  
   <link id="themeLink" rel="stylesheet" href="light.css">
+  <link rel="stylesheet" href="style.css">
   <script defer src="script_widgets.js"></script>
   <script defer src="script_login.js"></script>
 </head>
 <body>
 
-  <!-- 🔘 Перемикач теми -->
-  <div class="theme-switch">
-    <span>🌞</span>
+  <!-- 🌗 Віджет перемикача теми -->
+  <div class="theme-widget">
+    <span class="sun">🌞</span>
     <label class="switch">
       <input type="checkbox" id="themeCheckbox">
-      <span class="slider"></span>
+      <span class="slider round"></span>
     </label>
-    <span>🌙</span>
+    <span class="moon">🌙</span>
   </div>
 
   <!-- 🔐 Форма входу -->
@@ -31,7 +31,6 @@
     <button id="loginBtn">Увійти</button>
     <p id="loginMsg"></p>
   </div>
-
 
 </body>
 </html>
