@@ -25,3 +25,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+
+const flags = document.querySelectorAll('.language-widget .flag');
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+
+  // Додаємо клас selected тільки до вибраного прапора
+  flags.forEach(f => f.classList.toggle('selected', f.dataset.lang === lang));
+  console.log("Вибрана мова:", lang);
+}
+
+// Клік по прапору
+flags.forEach(flag => {
+  flag.addEventListener('click', () => setLanguage(flag.dataset.lang));
+});
+
+// Ініціалізація при завантаженні
+setLanguage(currentLang);
