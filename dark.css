@@ -1,61 +1,69 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  color: #e2e8f0;
+  transition: background-color 0.4s, color 0.4s;
 }
 
+/* 🧱 Контейнер логіну */
 .login-container {
-  background: #1e293b;
-  padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-  width: 90%;
-  max-width: 360px;
+  background: #222;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  width: 100%;
+  max-width: 480px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 h2 {
-  color: #93c5fd;
+  color: #7eaaf2;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
 }
 
+/* 🧩 Поля вводу */
 input {
-  width: 90%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 1px solid #475569;
+  width: 85%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #555;
   border-radius: 10px;
-  background-color: #0f172a;
-  color: #f1f5f9;
   font-size: 16px;
   outline: none;
+  background-color: #333;
+  color: #f5f5f5;
   transition: 0.2s;
 }
 
 input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 6px rgba(59,130,246,0.6);
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px rgba(74,144,226,0.4);
 }
 
+/* 🔘 Кнопка */
 button {
-  width: 95%;
-  padding: 12px;
-  background-color: #3b82f6;
+  width: 90%;
+  padding: 14px;
+  background-color: #4a90e2;
   color: white;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 17px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 12px;
   transition: 0.3s;
 }
 
 button:hover {
-  background-color: #2563eb;
+  background-color: #3570b3;
+  transform: scale(1.02);
 }
 
 #loginMsg {
@@ -64,19 +72,24 @@ button:hover {
   font-weight: 500;
 }
 
+/* 📱 Мобільна адаптація */
 @media (max-width: 480px) {
   .login-container {
-    width: 100%;
-    padding: 20px;
+    width: 92%;
+    padding: 24px;
+    border-radius: 14px;
   }
 
   input, button {
     font-size: 15px;
   }
+
+  h2 {
+    font-size: 1.4rem;
+  }
 }
 
-
-/* === Віджет перемикача теми === */
+/* 🌗 Віджет перемикача теми */
 .theme-widget {
   position: fixed;
   top: 10px;
@@ -87,16 +100,8 @@ button:hover {
   padding: 6px 12px;
   border-radius: 20px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   z-index: 1000;
-}
-
-/* Світла або темна фонова заливка */
-body.light .theme-widget {
-  background: rgba(255, 255, 255, 0.7);
-}
-
-body.dark .theme-widget {
   background: rgba(50, 50, 50, 0.7);
 }
 
@@ -118,7 +123,7 @@ body.dark .theme-widget {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background-color: #ccc;
+  background-color: #555;
   transition: .4s;
   border-radius: 34px;
 }
@@ -130,48 +135,17 @@ body.dark .theme-widget {
   width: 20px;
   left: 4px;
   bottom: 3px;
-  background-color: white;
+  background-color: #f5f5f5;
   transition: .4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #333;
+  background-color: #4a90e2;
 }
 
 input:checked + .slider:before {
   transform: translateX(24px);
-}
-
-
-
-/* 🌙 Темна тема */
-body {
-  background-color: #121212;
-  color: #e4e4e4;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: background-color 0.4s, color 0.4s;
-}
-
-h1 {
-  color: #64b5f6;
-}
-
-p {
-  color: #ccc;
-}
-
-.theme-switch {
-  background: rgba(30, 30, 30, 0.7);
-  box-shadow: 0 2px 10px rgba(255,255,255,0.1);
-}
-
-.slider {
-  background-color: #444;
-}
-
-input:checked + .slider {
-  background-color: #64b5f6;
 }
 
 .sun, .moon {
