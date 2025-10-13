@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>Сторінка 2</title>
+  <link id="themeLink" rel="stylesheet" href="light.css">
+  <script src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Логіка графіків та даних -->
+  <script src="Chart_logic.js"></script>
+  <script src="script_data.js"></script>
+
+  
+</head>
+<body>
+   <!-- 🔘 Перемикач теми -->
+  <div class="theme-switch">
+    <span>🌞</span>
+    <label class="switch">
+      <input type="checkbox" id="themeCheckbox">
+      <span class="slider"></span>
+    </label>
+    <span>🌙</span>
+  </div>
+  
+  <div id="content" style="text-align:center; margin-top:50px;">
+    <h1>Сторінка 2</h1>
+    <p>Це друга приватна сторінка.</p>
+    <button onclick="location.href='index.html'">На головну</button>
+   
+  </div>
+
+  <h1>Графік по країнах</h1>
+  <canvas id="chart1" width="600" height="400"></canvas>
+
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
