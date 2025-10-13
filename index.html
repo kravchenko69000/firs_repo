@@ -3,17 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Вхід у систему</title>
+  <title>Вхід</title>
+
+  <!-- Тема за замовчуванням -->
   <link id="themeLink" rel="stylesheet" href="light.css">
-  <script src="Script_log.js" defer></script>
+
+  <script defer src="script_login.js"></script>
 </head>
 <body>
-  <div id="login" style="text-align:center; margin-top:50px;">
-    <h2>Вхід</h2>
+
+  <!-- 🔘 Перемикач теми -->
+  <div class="theme-switch">
+    <span>🌞</span>
+    <label class="switch">
+      <input type="checkbox" id="themeCheckbox">
+      <span class="slider"></span>
+    </label>
+    <span>🌙</span>
+  </div>
+
+  <!-- 🔐 Форма входу -->
+  <div class="login-container">
+    <h2>🔐 Вхід до системи</h2>
     <input id="username" type="text" placeholder="Введіть ім'я користувача"><br><br>
     <input id="password" type="password" placeholder="Введіть пароль"><br><br>
     <button id="loginBtn">Увійти</button>
-    <p id="loginMsg" style="color:red; display:none;"></p>
+    <p id="loginMsg"></p>
   </div>
+
+
 </body>
 </html>
