@@ -51,7 +51,9 @@ function setLanguage(lang, redirect = true) {
     };
 
     const targetPage = pageMap[lang];
-    if (targetPage) {
+
+    // Перевірка: якщо вже на потрібній сторінці — не перенаправляй
+    if (targetPage && !window.location.href.includes(targetPage)) {
       window.location.href = targetPage;
     }
   }
