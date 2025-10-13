@@ -1,241 +1,184 @@
-/* =========================================
-   Світла тема
-========================================= */
+/* 🌙 Темна тема */
+
+/* ======== БАЗОВІ СТИЛІ ======== */
 body {
   font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: #0e0e11;
+  color: #f0f0f0;
   margin: 0;
-  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-  color: #222;
-  transition: background-color 0.4s, color 0.4s;
+  padding: 0;
+  line-height: 1.5;
 }
 
-/* Логін контейнер */
-.login-container {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  width: 90%;
-  max-width: 480px;
-  text-align: center;
-  transition: all 0.3s ease;
+h2 {
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 4px;
 }
 
-/* Заголовки */
-h2 { 
-  color: #1e3a8a; 
-  font-size: 1.8rem; 
-  margin-bottom: 20px; 
+/* ======== НАВІГАЦІЯ ======== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 1000;
 }
 
-/* Повідомлення */
-#loginMsg { 
-  color: #f87171; 
-  margin-top: 10px; 
-  font-weight: 500; 
+nav .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
 }
 
-/* Поля вводу */
-input {
-  width: 85%;
-  padding: 14px;
-  margin: 10px 0;
-  border-radius: 10px;
-  font-size: 16px;
-  outline: none;
-  background-color: #fff;
-  color: #222;
-  border: 1px solid #94a3b8;
-  transition: 0.2s;
+nav a {
+  color: #66b3ff;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 6px rgba(37,99,235,0.4);
+nav a:hover {
+  color: #99d4ff;
 }
 
-/* Кнопки */
-button {
-  width: 90%;
-  padding: 14px;
-  border: none;
-  border-radius: 10px;
-  font-size: 17px;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: 0.3s;
-  background-color: #2563eb;
-  color: white;
+.run-date {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  text-align: right;
 }
 
-button:hover { 
-  background-color: #1e40af; 
-  transform: scale(1.02); 
-}
-
-/* =========================================
-   Верхня панель: Ліва група + Права група
-========================================= */
+/* ======== ВЕРХНЯ ПАНЕЛЬ ======== */
 .top-bar {
   position: fixed;
-  top: 10px;
+  top: 65px; /* нижче навігації */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: auto;
-  max-width: 95%;
-  gap: 10px;
-  padding: 6px 12px;
-  background: rgba(255,255,255,0.85);
+  max-width: 90%;
+  gap: 12px;
+  padding: 6px 14px;
+  background: rgba(25, 25, 25, 0.85);
   border-radius: 14px;
   backdrop-filter: blur(6px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  z-index: 999;
 }
 
-/* Ліва група: кнопка + мова */
-.left-widget {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* 🔴 Кнопка виходу */
-.logout-btn {
-  background-color: #ef4444;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 13px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.25s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-
-.logout-btn:hover {
-  background-color: #dc2626;
-  transform: scale(1.05);
-}
-
-/* Віджет мови */
-.language-widget {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.language-widget .flag {
-  font-size: 22px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.language-widget .flag:hover { transform: scale(1.2); }
-.language-widget .flag.selected {
-  transform: scale(1.3);
-  box-shadow: 0 0 10px rgba(74,144,226,0.8);
-  border-radius: 8px;
-}
-
-/* Права група: тема день/ніч */
+/* ======== ТЕМА ======== */
 .theme-widget {
-  position: fixed;
-  top: 10px;
-  right: 20px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 1000;
-  background: rgba(255,255,255,0.7);
+  gap: 6px;
 }
 
 .sun, .moon {
   font-size: 18px;
-  user-select: none;
 }
 
-/* Слайдер теми */
+/* 🔘 Перемикач теми */
 .switch {
   position: relative;
   display: inline-block;
-  width: 44px;
-  height: 22px;
+  width: 36px;
+  height: 18px;
 }
-
-.switch input { opacity: 0; width: 0; height: 0; }
-
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 .slider {
   position: absolute;
-  inset: 0;
-  background-color: #ccc;
-  transition: .3s;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #444;
+  transition: .4s;
   border-radius: 34px;
 }
-
 .slider:before {
-  content: "";
   position: absolute;
-  height: 18px;
-  width: 18px;
-  left: 3px;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
   bottom: 2px;
   background-color: white;
-  transition: .3s;
+  transition: .4s;
   border-radius: 50%;
 }
-
-input:checked + .slider { background-color: #4a90e2; }
-input:checked + .slider:before { transform: translateX(22px); }
-
-/* =========================================
-   Адаптивність
-========================================= */
-@media (max-width: 480px) {
-  .login-container { width: 92%; padding: 24px; border-radius: 14px; }
-  input, button { font-size: 15px; padding: 12px; width: 95%; }
-  h2 { font-size: 1.4rem; }
-  .top-bar { 
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    padding: 4px 8px; 
-    gap: 6px;
-  }
-  .logout-btn { padding: 5px 8px; font-size: 12px; }
-  .language-widget .flag, .theme-widget { 
-    font-size: 20px; 
-  }
-  .left-widget, .theme-widget { flex: 1; justify-content: center; }
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:checked + .slider:before {
+  transform: translateX(18px);
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  .login-container { max-width: 500px; padding: 36px; }
-  input, button { font-size: 16px; padding: 14px; width: 90%; }
-  h2 { font-size: 1.6rem; }
-  .language-widget .flag, .theme-widget span { font-size: 24px; }
+/* ======== МОВИ ======== */
+.language-widget {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+}
+.flag {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.flag:hover {
+  transform: scale(1.15);
 }
 
-@media (min-width: 769px) and (max-width: 1200px) {
-  .login-container { max-width: 600px; padding: 50px; }
-  input, button { font-size: 18px; padding: 16px; width: 85%; }
-  h2 { font-size: 2rem; }
-  .language-widget .flag, .theme-widget span { font-size: 26px; }
+/* ======== КНОПКА ВИХОДУ ======== */
+.logout-btn {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.logout-btn:hover {
+  background-color: #ff4f5e;
+  transform: scale(1.05);
 }
 
-@media (min-width: 1200px) {
-  .login-container { max-width: 700px; padding: 60px; }
-  input, button { font-size: 19px; padding: 18px; width: 80%; }
-  h2 { font-size: 2.2rem; }
-  .language-widget .flag, .theme-widget span { font-size: 28px; }
+/* ======== КОНТЕЙНЕРИ ГРАФІКІВ ======== */
+main {
+  padding-top: 130px; /* щоб не перекривало панель */
+  padding-bottom: 50px;
+}
+
+.chart-container {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  min-height: 200px;
+}
+
+/* ======== FOOTER ======== */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  padding: 15px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background-color: rgba(20,20,20,0.9);
 }
