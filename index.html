@@ -5,20 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <title>Головна сторінка</title>
   <link id="themeLink" rel="stylesheet" href="light.css">
-  <!-- 📘 Бібліотека для роботи з Excel -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
-  <!-- 📊 Бібліотека для графіків (Chart.js або Plotly, обери одну) -->
-
-  <!-- Варіант 1: Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-  <script src="script_data.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-   <!-- 🔘 Перемикач теми -->
+  <!-- 🔘 Перемикач теми -->
   <div class="theme-switch">
     <span>🌞</span>
     <label class="switch">
@@ -35,17 +27,5 @@
     <button id="loginBtn">Увійти</button>
     <p id="loginMsg" style="color:red; display:none;"></p>
   </div>
-
-  <!-- Основний контент -->
-  <div id="content" style="display:none; text-align:center;">
-    <h1>Вітаємо!</h1>
-    <p>Ви успішно увійшли до системи.</p>
-    <button onclick="location.href='page1.html'">На сторінку 1</button>
-    <button onclick="location.href='page2.html'">На сторінку 2</button>
-    <br><br>
-    <button id="logoutBtn" style="background:#f87171;">Вийти</button>
-  </div>
-
-  
 </body>
 </html>
