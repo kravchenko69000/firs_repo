@@ -78,7 +78,7 @@ button:hover {
 }
 
 /* =========================================
-   Верхня панель: Вихід + Мова + Тема
+   Верхня панель: Ліва група + Права група
 ========================================= */
 .top-bar {
   position: fixed;
@@ -86,15 +86,24 @@ button:hover {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: auto;
+  max-width: 95%;
   gap: 10px;
-  z-index: 1000;
   padding: 6px 12px;
   background: rgba(255,255,255,0.85);
   border-radius: 14px;
   backdrop-filter: blur(6px);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+/* Ліва група: кнопка + мова */
+.left-widget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* 🔴 Кнопка виходу */
@@ -136,14 +145,16 @@ button:hover {
   border-radius: 8px;
 }
 
-/* Віджет теми */
+/* Права група: тема день/ніч */
 .theme-widget {
-  position: fixed;
-  top: 10px;
-  right: 10px;
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   z-index: 1001;
 }
 
@@ -194,18 +205,15 @@ input:checked + .slider:before { transform: translateX(22px); }
   h2 { font-size: 1.4rem; }
   .top-bar { 
     flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 6px; 
+    justify-content: space-between; 
     padding: 4px 8px; 
+    gap: 6px;
   }
   .logout-btn { padding: 5px 8px; font-size: 12px; }
   .language-widget .flag, .theme-widget { 
     font-size: 20px; 
-    position: relative; 
-    top: 0; 
-    right: 0; 
   }
-  .theme-widget { position: relative; order: 3; }
+  .left-widget, .theme-widget { flex: 1; justify-content: center; }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
