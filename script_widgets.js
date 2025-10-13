@@ -49,3 +49,22 @@ flags.forEach(flag => {
 
 // Ініціалізація при завантаженні
 setLanguage(currentLang);
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+});
+
+// 🔴 Функція виходу
+function handleLogout() {
+  // Очищення локального сховища
+  localStorage.clear();
+
+  // Перехід на головну сторінку
+  window.location.href = "index.html"; // Замінити, якщо головна має іншу назву
+}
