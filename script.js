@@ -1,22 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const correctPassword = "1234"; // 🔒 заміни на свій пароль
-  const loginDiv = document.getElementById("login");
-  const contentDiv = document.getElementById("content");
-  const loginBtn = document.getElementById("loginBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
-  const msg = document.getElementById("loginMsg");
+document.getElementById("loginBtn").addEventListener("click", () => {
+  const passwordInput = document.getElementById("password").value;
+  const loginMsg = document.getElementById("loginMsg");
 
-  // Функція оновлення вигляду сторінки
-  function updateView() {
-    const loggedIn = localStorage.getItem("loggedIn") === "true";
-    if (loggedIn) {
-      loginDiv.style.display = "none";
-      contentDiv.style.display = "block";
-    } else {
-      loginDiv.style.display = "block";
-      contentDiv.style.display = "none";
-    }
+  // Задай свій пароль
+  const correctPassword = "1234";
+
+  if (passwordInput === correctPassword) {
+    // Перехід на PO_EN.html
+    window.location.href = "PO_EN.html";
+  } else {
+    loginMsg.style.display = "block";
+    loginMsg.textContent = "Невірний пароль!";
   }
+});
 
   // Натискання кнопки "Увійти"
   if (loginBtn) {
