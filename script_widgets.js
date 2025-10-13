@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
 const flags = document.querySelectorAll('.language-widget .flag');
 let currentLang = localStorage.getItem('lang') || 'en';
 
-// Функція зміни мови та переходу на відповідну сторінку
-function setLanguage(lang, redirect = true) {
+// Функція вибору мови (без переходу на інші сторінки)
+function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
 
@@ -40,23 +40,6 @@ function setLanguage(lang, redirect = true) {
   flags.forEach(f => f.classList.toggle('selected', f.dataset.lang === lang));
 
   console.log("Вибрана мова:", lang);
-
-  if (redirect) {
-    // Перенаправлення на відповідну сторінку
-    const pageMap = {
-      en: 'PO_EN.html',
-      ru: 'PO_RU.html',
-      si: 'PO_SI.html',
-      uk: 'PO_UK.html'
-    };
-
-    const targetPage = pageMap[lang];
-
-    // Перевірка: якщо вже на потрібній сторінці — не перенаправляй
-    if (targetPage && !window.location.href.includes(targetPage)) {
-      window.location.href = targetPage;
-    }
-  }
 }
 
 // Обробка кліку по прапору
@@ -64,5 +47,5 @@ flags.forEach(flag => {
   flag.addEventListener('click', () => setLanguage(flag.dataset.lang));
 });
 
-// Ініціалізація при завантаженні — лише підсвічування, без переходу
-setLanguage(currentLang, false);
+// Ініціалізація при завантаженні
+setLanguage(currentLang);
