@@ -1,103 +1,80 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Отчет с графиками</title>
-
-  <script defer src="script_widgets.js"></script>
-  <link rel="stylesheet" href="light.css" id="theme-link">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Навігація — робочий приклад</title>
+  <link rel="stylesheet" href="style.css" />
+  
 </head>
 <body>
+  <div class="top-bar">
+    <div class="left-section">
+      <button class="logout-btn" id="logoutBtn" title="Вихід">⇦</button>
 
-  <!-- 🔹 Навігація -->
-  <nav>
-    <div class="links">
-      <a href="#commercial">Коммерческая часть</a>
-      <a href="#financial">Финансовая часть</a>
+      <div class="menu">
+        <button class="menu-btn" id="menuToggle">Меню ▾</button>
 
-      <div style="display: flex; align-items: center; gap: 5px; flex-wrap: wrap; font-weight: bold; color: white;">
-        <a href="#pl">→ PL</a>
-        <span>(</span>
-        <a href="#pl-budget" style="font-weight: normal; color: white;">Бюджет</a><span>,</span>
-        <a href="#pl-fact" style="font-weight: normal; color: white;">Факт</a><span>,</span>
-        <span style="font-weight: normal;">План факт Анализ (</span>
-        <a href="#pl-cumulative" style="font-weight: normal; color: white;">Кумулятивный</a><span>,</span>
-        <a href="#pl-month" style="font-weight: normal; color: white;">Месяц</a>
-        <span style="font-weight: normal;">)</span>
-        <span>)</span>
+        <!-- основне випадаюче меню -->
+        <div class="dropdown" id="mainDropdown" aria-hidden="true">
+          <!-- Кнопка 1 -->
+          <div class="menu-item">
+            <button class="submenu-btn" data-target="menu1">Кнопка 1 ▸</button>
+            <div class="submenu" id="menu1" aria-hidden="true">
+              <button class="leaf">1.1</button>
+              <button class="leaf">1.2</button>
+              <button class="leaf">1.3</button>
+            </div>
+          </div>
+
+          <!-- Кнопка 2 -->
+          <div class="menu-item">
+            <button class="submenu-btn" data-target="menu2">Кнопка 2 ▸</button>
+            <div class="submenu" id="menu2" aria-hidden="true">
+              <div class="menu-item">
+                <button class="submenu-btn" data-target="menu2_1">2.1 ▸</button>
+                <div class="submenu" id="menu2_1" aria-hidden="true">
+                  <button class="leaf">2.1.1</button>
+                  <button class="leaf">2.1.2</button>
+                  <button class="leaf">2.1.3</button>
+                </div>
+              </div>
+
+              <div class="menu-item">
+                <button class="submenu-btn" data-target="menu2_2">2.2 ▸</button>
+                <div class="submenu" id="menu2_2" aria-hidden="true">
+                  <button class="leaf">2.2.1</button>
+                  <button class="leaf">2.2.2</button>
+                </div>
+              </div>
+
+              <button class="leaf">2.3</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="language-widget" id="languageWidget">
+        <button class="flag selected" id="mainFlag" aria-haspopup="true" aria-expanded="false">🇺🇦</button>
+        <div class="language-dropdown" id="languageDropdown" aria-hidden="true">
+          <button class="flag-option" data-lang="en">🇺🇸</button>
+          <button class="flag-option" data-lang="si">🇸🇮</button>
+          <button class="flag-option" data-lang="ru">🇷🇺</button>
+        </div>
       </div>
 
-      <a href="#bs">→ BS</a>
-      <span>(</span>
-      <a href="#wc">WC</a>
-      <span>)</span>
-
-      <a href="#cf">→ CF</a>
+      <div class="theme-widget">
+        <span class="sun">🌞</span>
+        <label class="switch" title="Тема">
+          <input type="checkbox" id="themeCheckbox" />
+          <span class="slider round"></span>
+        </label>
+        <span class="moon">🌙</span>
+      </div>
     </div>
-
-    <div class="run-date">
-      Выполнено: {run_date} (Киевское время)<br>
-      Отчет после закрытия<br>
-      {REPORT_MONTH} {REPORT_YEAR} года
-    </div>
-  </nav>
-
-  <!-- 🔹 Верхня панель: тема / мова / вихід -->
-  <div class="top-bar">
-    <div class="theme-widget">
-      <span class="sun">🌞</span>
-      <label class="switch">
-        <input type="checkbox" id="themeCheckbox">
-        <span class="slider round"></span>
-      </label>
-      <span class="moon">🌙</span>
-    </div>
-
-    <div class="language-widget">
-      <span class="flag" data-lang="uk" title="Українська">🇺🇦</span>
-      <span class="flag" data-lang="en" title="English">🇺🇸</span>
-      <span class="flag" data-lang="si" title="Slovenščina">🇸🇮</span>
-      <span class="flag" data-lang="ru" title="Русский">🇷🇺</span>
-    </div>
-
-    <button class="logout-btn" id="logoutBtn">⇦ Вихід</button>
   </div>
-
-  <!-- 🔹 Основна частина -->
-  <main>
-    <section id="commercial">
-      <h2>Коммерческая часть</h2>
-      <div class="chart-container" id="sales_fig1"></div>
-      <div class="chart-container" id="sales_fig2"></div>
-    </section>
-
-    <section id="financial">
-      <h2>Финансовая часть</h2>
-      <div class="chart-container" id="fin_fig1"></div>
-      <div class="chart-container" id="fin_fig2"></div>
-    </section>
-
-    <section id="pl">
-      <h2>Profit & Loss</h2>
-      <div class="chart-container" id="pl_fig1"></div>
-      <div class="chart-container" id="pl_fig2"></div>
-    </section>
-
-    <section id="bs">
-      <h2>Balance Sheet</h2>
-      <div class="chart-container" id="bs_fig1"></div>
-    </section>
-
-    <section id="cf">
-      <h2>Cash Flow</h2>
-      <div class="chart-container" id="cf_fig1"></div>
-    </section>
-  </main>
-
-  <footer>
-    Отчет после закрытия месяца
-  </footer>
 
   <script src="script.js"></script>
 </body>
