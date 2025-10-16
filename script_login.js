@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let loginsHTML = "";
 
         // Якщо logins — об'єкт, це Admin
-        if (typeof data.logins === "Admin") {
+        if (typeof data.logins === "object") {
           loginsHTML = "<b>Лічильник входів усіх користувачів:</b><br>";
           for (const user in data.logins) {
             loginsHTML += `${user}: ${data.logins[user]} раз(ів)<br>`;
           }
         } else {
           // Для інших користувачів показуємо лише їх власний лічильник
-          loginsHTML = "";
+          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
         }
 
         loginMsg.innerHTML = `
