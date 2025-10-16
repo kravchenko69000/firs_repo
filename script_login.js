@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginMsg = document.getElementById("loginMsg");
   const fileContainer = document.getElementById("fileContainer");
 
-  const SCRIPT_URL = "🔗 ВСТАВ ТУТ СВІЙ Apps Script URL"; // приклад: https://script.google.com/macros/s/AKfycbw.../exec
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec"; // приклад: https://script.google.com/macros/s/AKfycbw.../exec
 
   loginBtn.addEventListener("click", async () => {
     const name = document.getElementById("username").value.trim();
