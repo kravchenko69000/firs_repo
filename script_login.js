@@ -61,6 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
             `${SCRIPT_URL}?file=Report&name=${encodeURIComponent(savedName)}&password=${encodeURIComponent(savedPassword)}`,
             "_blank"
           );
+          loginBtn.disabled = true;
+          loginBtn.style.opacity = "0.6"; // можна додати прозорість для наочності
+          loginBtn.style.cursor = "not-allowed";
         });
 
       } else {
