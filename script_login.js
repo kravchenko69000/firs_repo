@@ -8,21 +8,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!name || !password) {
       loginMsg.textContent = "⚠️ Введіть ім'я та пароль.";
+      loginMsg.style.color = "red";
       return;
     }
 
-    // 🔗 ВСТАВ СЮДИ СВІЙ URL З Google Apps Script
+    // 🔗 URL Google Apps Script
     const url = `https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
 
     try {
       loginMsg.textContent = "⏳ Перевірка...";
+      loginMsg.style.color = "black";
+
       const res = await fetch(url);
       const data = await res.json();
 
       if (data.success) {
+        let loginsHTML = "";
+
+        // Якщо logins — об'єкт, це Admin
+        if (typeof data.logins === "object") {
+          loginsHTML = "<b>Лічильник входів усіх користувачів:</b><br>";
+          for (const user in data.logins) {
+            loginsHTML += `${user}: ${data.logins[user]} раз(ів)<br>`;
+          }
+        } else {
+          // Для інших користувачів показуємо лише їх власний лічильник
+          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
+        }
+
         loginMsg.innerHTML = `
           ✅ Вітаю, <b>${data.name}</b>!<br>
-          Ви увійшли ${data.logins} раз(ів).<br><br>
+          ${loginsHTML}<br><br>
           <b>Ваші файли:</b><br>
           ${data.files.map(f => `<a href="${f}" target="_blank">📁 Завантажити файл</a>`).join("<br>")}
         `;
@@ -34,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       loginMsg.textContent = "❌ Помилка з'єднання із сервером.";
       loginMsg.style.color = "red";
+      console.error(err);
     }
   });
 });
