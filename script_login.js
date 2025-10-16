@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const loginMsg = document.getElementById("loginMsg");
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec";
 
   loginBtn.addEventListener("click", async () => {
     const name = document.getElementById("username").value.trim();
@@ -29,14 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("password", password);
 
         let loginsHTML = "";
-
         if (typeof data.logins === "object") {
           loginsHTML = "<b>Лічильник входів усіх користувачів:</b><br>";
           for (const user in data.logins) {
             loginsHTML += `${user}: ${data.logins[user]} раз(ів)<br>`;
           }
         } else {
-          loginsHTML = "";
+          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
         }
 
         loginMsg.innerHTML = `
