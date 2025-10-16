@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const url = `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
+    const url = `https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
 
     try {
       loginMsg.textContent = "⏳ Перевірка...";
