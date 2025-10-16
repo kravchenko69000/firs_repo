@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } else {
           // Для інших користувачів показуємо лише їх власний лічильник
-          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
+          loginsHTML = "";
         }
 
         loginMsg.innerHTML = `
