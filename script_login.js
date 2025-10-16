@@ -24,9 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
 
       if (data.success) {
-        // Показати одну кнопку для відкриття звіту
+        let loginsHTML = "";
+
+        if (typeof data.logins === "object") {
+          // Admin бачить усіх
+          loginsHTML = "<b>Лічильник входів усіх користувачів:</b><br>";
+          for (const user in data.logins) {
+            loginsHTML += `${user}: ${data.logins[user]} раз(ів)<br>`;
+          }
+        } else {
+          // Звичайний користувач бачить тільки себе
+          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
+        }
+
+        // Показуємо кнопку для відкриття звіту
         loginMsg.innerHTML = `
           ✅ Вітаю, <b>${data.name}</b>!<br>
+          ${loginsHTML}<br><br>
           <button id="showReport" style="
             background-color: orange;
             color: white;
@@ -40,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loginMsg.style.color = "green";
 
         document.getElementById("showReport").addEventListener("click", () => {
-          // Відкриваємо один файл Report.html
+          // Відкриваємо Report.html
           window.open(`${SCRIPT_URL}?file=Report&name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`, "_blank");
         });
 
