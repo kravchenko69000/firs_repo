@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginMsg = document.getElementById("loginMsg");
   const fileContainer = document.getElementById("fileContainer");
 
+  const SCRIPT_URL = "🔗 ВСТАВ ТУТ СВІЙ Apps Script URL"; // приклад: https://script.google.com/macros/s/AKfycbw.../exec
+
   loginBtn.addEventListener("click", async () => {
     const name = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const url = `https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
+    const url = `${SCRIPT_URL}?name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
 
     try {
       loginMsg.textContent = "⏳ Перевірка...";
@@ -37,22 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
         loginMsg.innerHTML = `
           ✅ Вітаю, <b>${data.name}</b>!<br>
           ${loginsHTML}<br><br>
-          <b>Ваші графіки:</b><br>
+          <b>Ваші сторінки:</b><br>
           ${data.files.map(f => `<button class="openFile" data-file="${f}">Відкрити ${f}</button>`).join("<br>")}
         `;
-        loginMsg.style.color = "limegreen";
+        loginMsg.style.color = "green";
 
-        // Додаємо події для кнопок відкриття HTML
+        // Події кнопок
         document.querySelectorAll(".openFile").forEach(btn => {
           btn.addEventListener("click", () => {
-            const fileName = btn.getAttribute("data-file");
-            fileContainer.innerHTML = ""; // очистити контейнер
-            const iframe = document.createElement("iframe");
-            iframe.src = `https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec?file=${fileName}&name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
-            iframe.width = "100%";
-            iframe.height = "600px";
-            iframe.style.border = "1px solid #ccc";
-            fileContainer.appendChild(iframe);
+            const fileName = btn.dataset.file;
+            window.open(`${SCRIPT_URL}?file=${fileName}&name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`, "_blank");
           });
         });
 
