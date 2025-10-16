@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ✅ Вітаю, <b>${data.name}</b>!<br>
           ${loginsHTML}<br><br>
           <b>Ваші файли:</b><br>
-          ${data.files.map(f => `<a href="${f}" target="_blank">📁 Завантажити файл</a>`).join("<br>")}
+          ${data.files.map(f => `<a href="${f}" target="_blank" rel="noopener noreferrer">🌐 Відкрити сторінку</a>`).join("<br>")}
         `;
         loginMsg.style.color = "limegreen";
       } else {
