@@ -1,180 +1,109 @@
-:root{
-  --bg: #f0f0f0;
-  --panel: #2c2c2c;
-  --text: #111;
-  --muted: #777;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background:var(--bg);
-  color:var(--text);
+/* =========================================
+   Темна тема для логіну
+========================================= */
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f0f0f0;
+  transition: background-color 0.4s, color 0.4s;
 }
 
-/* Top bar */
-.top-bar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:4px 15px;
-  background:var(--panel);
-  color:#fff;
-  gap:12px;
+/* Логін контейнер */
+.login-container {
+  background: #1e293b;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  color: #f0f0f0;
 }
 
-/* left section with exit + menu */
-.left-section{ display:flex; align-items:center; gap:25px; }
-
-/* exit button (small red) */
-.logout-btn{
-  background:#d32f2f;
-  color:#fff;
-  border:0;
-  padding:10px 8px;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:600;
-  line-height:1;
-  width:36px;
-  height:36px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-.logout-btn:hover{ background:#b71c1c; transform: scale(1.2) }
-
-/* menu and dropdown */
-.menu{ position:relative; }
-
-.menu-btn{
-  background:#424242;
-  color:#fff;
-  border:0;
-  padding:8px 12px;
-  border-radius:6px;
-  cursor:pointer;
-}
-.menu-btn:hover{ background:#505050; transform: scale(1.2) }
-
-/* main dropdown (under Menu) */
-.dropdown{
-  display:none;
-  position:absolute;
-  top:calc(100% + 8px);
-  left:0;
-  background:#333;
-  border-radius:8px;
-  padding:8px;
-  min-width:220px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.4);
-  z-index:40;
-  animation:fadeIn .18s ease;
+/* Заголовки */
+h2 {
+  color: #60a5fa;
 }
 
-/* menu-item block */
-.menu-item{ position:relative; }
-
-/* submenu items (nested panels) */
-.submenu{
-  display:none;
-  position:absolute;
-  left:100%;
-  top:0;
-  min-width:200px;
-  background:#2b2b2b;
-  border-radius:6px;
-  padding:6px;
-  box-shadow:0 8px 16px rgba(0,0,0,0.3);
+/* Повідомлення */
+#loginMsg {
+  color: #f87171;
 }
 
-/* buttons inside menus */
-.dropdown button, .submenu button{
-  display:block;
-  width:100%;
-  background:transparent;
-  border:0;
-  color:#eee;
-  text-align:left;
-  padding:8px 10px;
-  border-radius:6px;
-  cursor:pointer;
+/* Поля вводу */
+input {
+  background-color: #334155;
+  color: #f0f0f0;
+  border: 1px solid #64748b;
+  transition: 0.2s;
 }
 
-.dropdown{
-  display:none;
-  position:absolute;
-  top:100%;
-  left:0;
-  margin-top:6px; /* невеликий візуальний відступ, але без проміжку "мишки" */
-  background:#333;
-  border-radius:8px;
-  padding:8px;
-  min-width:220px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.4);
-  z-index:40;
-  animation:fadeIn .18s ease;
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 6px rgba(59,130,246,0.6);
 }
 
-.language-dropdown{
-  position:absolute;
-  right:0;
-  top:100%;
-  margin-top:6px;
-  display:none;
-  background:#333;
-  border-radius:6px;
-  padding:6px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.35);
+/* Кнопки */
+button {
+  background-color: #3b82f6;
+  color: #f0f0f0;
 }
 
-
-.dropdown button:hover, .submenu button:hover{ background:#3d3d3d; }
-
-/* right section widgets */
-.right-section{ display:flex; align-items:center; gap:14px; }
-
-/* language widget */
-.language-widget{ position:relative; display:flex; align-items:center; gap:6px; }
-.flag{ font-size:20px; cursor:pointer; border:0; background:transparent; padding:6px; color:inherit; }
-.flag.selected{ outline:2px solid rgba(255,255,255,0.08); border-radius:6px; }
-.language-dropdown{
-  position:absolute;
-  right:0;
-  top:calc(100% + 8px);
-  display:none;
-  background:#333;
-  border-radius:6px;
-  padding:6px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.35);
-}
-.language-dropdown .flag-option{ display:block; padding:6px 8px; }
-
-/* theme switch */
-.theme-widget{ display:flex; align-items:center; gap:8px; color:#fff; }
-
-/* switch */
-.switch{ position:relative; display:inline-block; width:40px; height:22px; }
-.switch input{ opacity:0; width:0; height:0; }
-.slider{ position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#999; border-radius:34px; transition:.3s; }
-.slider:before{ position:absolute; content:""; height:16px; width:16px; left:3px; bottom:3px; background:#fff; border-radius:50%; transition:.3s; }
-.switch input:checked + .slider{ background:#4caf50; }
-.switch input:checked + .slider:before{ transform:translateX(18px); }
-
-/* dark body class */
-body.dark{
-  --bg:#111;
-  --panel:#1e1e1e;
-  --text:#eee;
-  background:#0b0b0b;
-  color:#eee;
+button:hover {
+  background-color: #2563eb;
+  transform: scale(1.02);
 }
 
-/* fade animation */
-@keyframes fadeIn{ from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:none} }
+/* Віджет теми */
+.theme-widget {
+  background: rgba(30,41,59,0.8);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
 
-/* responsive small screens — shrink spacing */
-@media (max-width:520px){
-  .dropdown{ min-width:180px }
-  .submenu{ min-width:160px }
+/* Віджет мови */
+.language-widget {
+  background: rgba(30,41,59,0.85);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.language-widget .flag.selected {
+  box-shadow: 0 0 12px rgba(96,165,250,0.8);
+}
+
+/* Кнопка logout */
+.logout-btn {
+  background-color: #ef4444;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+  transform: scale(1.05);
+}
+
+/* =========================================
+   Адаптивність
+========================================= */
+@media (max-width: 480px) {
+  .login-container { width: 92%; padding: 24px; border-radius: 14px; }
+  input, button { font-size: 15px; padding: 12px; width: 95%; }
+  h2 { font-size: 1.4rem; }
+  .theme-widget, .language-widget { padding: 4px 8px; gap: 6px; }
+  .language-widget .flag, .theme-widget span { font-size: 24px; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .login-container { max-width: 500px; padding: 36px; }
+  input, button { font-size: 16px; padding: 14px; width: 90%; }
+  h2 { font-size: 1.6rem; }
+  .language-widget .flag, .theme-widget span { font-size: 26px; }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .login-container { max-width: 600px; padding: 50px; }
+  input, button { font-size: 18px; padding: 16px; width: 85%; }
+  h2 { font-size: 2rem; }
+  .language-widget .flag, .theme-widget span { font-size: 28px; }
+}
+
+@media (min-width: 1200px) {
+  .login-container { max-width: 700px; padding: 60px; }
+  input, button { font-size: 19px; padding: 18px; width: 80%; }
+  h2 { font-size: 2.2rem; }
+  .language-widget .flag, .theme-widget span { font-size: 30px; }
 }
