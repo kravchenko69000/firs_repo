@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const fileName = btn.getAttribute("data-file");
             fileContainer.innerHTML = ""; // очистити контейнер
             const iframe = document.createElement("iframe");
-            iframe.src = `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?file=${fileName}&name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
+            iframe.src = `https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec?file=${fileName}&name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`;
             iframe.width = "100%";
             iframe.height = "600px";
             iframe.style.border = "1px solid #ccc";
