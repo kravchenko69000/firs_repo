@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const loginMsg = document.getElementById("loginMsg");
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZTU4tRfdWrVqKlmrQw0GjhWtmsXGWgxrCngb7yt4-XG0ODRSxjsc8S8sVW1aclmTw/exec"; // твій Apps Script URL
+  const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
 
   loginBtn.addEventListener("click", async () => {
     const name = document.getElementById("username").value.trim();
@@ -24,20 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
 
       if (data.success) {
+        // Зберігаємо логін у localStorage
+        localStorage.setItem("username", name);
+        localStorage.setItem("password", password);
+
         let loginsHTML = "";
 
         if (typeof data.logins === "object") {
-          // Admin бачить усіх
           loginsHTML = "<b>Лічильник входів усіх користувачів:</b><br>";
           for (const user in data.logins) {
             loginsHTML += `${user}: ${data.logins[user]} раз(ів)<br>`;
           }
         } else {
-          // Звичайний користувач бачить тільки себе
-          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
+          loginsHTML = "";
         }
 
-        // Показуємо кнопку для відкриття звіту
         loginMsg.innerHTML = `
           ✅ Вітаю, <b>${data.name}</b>!<br>
           ${loginsHTML}<br><br>
@@ -54,8 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
         loginMsg.style.color = "green";
 
         document.getElementById("showReport").addEventListener("click", () => {
-          // Відкриваємо Report.html
-          window.open(`${SCRIPT_URL}?file=Report&name=${encodeURIComponent(name)}&password=${encodeURIComponent(password)}`, "_blank");
+          const savedName = localStorage.getItem("username");
+          const savedPassword = localStorage.getItem("password");
+
+          window.open(
+            `${SCRIPT_URL}?file=Report&name=${encodeURIComponent(savedName)}&password=${encodeURIComponent(savedPassword)}`,
+            "_blank"
+          );
         });
 
       } else {
