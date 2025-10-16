@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loginsHTML += `${user}: ${data.logins[user]} раз(ів)<br>`;
           }
         } else {
-          loginsHTML = `Ви увійшли ${data.logins} раз(ів).`;
+          loginsHTML = ""`;
         }
 
         loginMsg.innerHTML = `
